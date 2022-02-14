@@ -1,13 +1,6 @@
 package com.example.demo.modelojsoninformacion;
 
-import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Component;
-
-import com.example.demo.entity.Email;
-import com.example.demo.entity.Telefono;
-
 
 public class InformacionDeContacto {
 	

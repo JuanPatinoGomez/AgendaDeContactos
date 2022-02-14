@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +25,6 @@ import com.example.demo.service.persona.ServicePersona;
 @RequestMapping("/contacto")
 public class ContactoRest {
 	
-	private Logger log = org.slf4j.LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	ServicePersona servicePersona;
@@ -48,7 +45,6 @@ public class ContactoRest {
 	@Qualifier("serviceemail")
 	private ServicesGeneral<Email> serviceGeneralEmail;
 	
-	//♠
 	
 	@PostMapping("/busqueda/nombre")
 	public List<PersonaFormato> buscarPersonaPorNombre(@RequestBody Map<String, String> solicitud){
@@ -79,6 +75,7 @@ public class ContactoRest {
 
 	@PostMapping("/eliminar/persona")
 	public Map<String, String> eliminarPersona(@RequestBody Map<String, Integer> solicitud){
+		
 		this.servicePersona.deleteById(solicitud.get("id"));
 		
 		Map<String, String> respuesta = new HashMap<>();
