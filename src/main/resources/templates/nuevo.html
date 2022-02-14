@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/estilosnuevos.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <section id="seccion-formulario">
+        <center>
+            <img th:src="@{/img/Trazado2.png}" alt="" class="logo-contacto">
+        </center>
+        
+        <form th:action="@{/guardar}" th:method="post" th:object="${contacto}">
+            
+            <input type="hidden" name="" th:field="*{id}" th:value="${contacto.id}">
+            <input type="text" placeholder="Nombre contacto" th:field="*{nombre}" th:value="${contacto.nombre}" required>
+            <br>
+            <br>
+            <span id="agregarcampotelefono" style="color: blue; cursor: pointer;">Agregar un campo de telefono más +</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="agregarcampoemail" style="color: blue; cursor: pointer;">Agregar un campo de email más +</span>
+            <br>
+            <br>
+
+            <!-- Div en caso de vaya a crear un nuevo contacto-->
+            <div class="informacion-contacto nuevo" th:if="${contacto.id == 0}">
+
+                <p>Telefonos</p>
+                <br>
+                <div class="contenedor-telefonos">
+                    <div class="telefono">
+                        <img src="img/Trazado11.png" alt="" width="43px" class="imagen-tipoC">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <input type="hidden" name="idtelefonos" value="0">
+                        <input type="tel" name="telefonos">
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="img/Trazado13.png" alt="" title="Eliminar telefono" class="eliminarT" idEliminar="0">
+                    </div>
+                </div>
+                <br><br>
+    
+                <p>Emails</p>
+                <br>
+                <div class="contenedor-emails">
+                    <div class="email">
+                        <img src="img/Trazado14.png" alt="" width="43px" class="imagen-tipoC">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <input type="hidden" name="idemails" value="0">
+                        <input type="email" name="emails">
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="img/Trazado13.png" alt="" title="Eliminar email" class="eliminarE" idEliminar="0">
+                    </div>
+                </div>
+                
+    
+            </div>
+           <!-- ----------------------------------------------------------------------------------------------------------- -->
+            <!-- Div en caso de que se vaya a editar un contacto -->
+            <div class="informacion-contacto editar" th:if="${contacto.id != 0}">
+
+                <p>Telefonos</p>
+                <br>
+                
+                <div class="contenedor-telefonos">
+                    <div class="telefono" th:each="telefono : ${tels}">
+                        <img th:src="@{/img/Trazado11.png}" alt="" width="43px" class="imagen-tipoC">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <input type="hidden" name="idtelefonos" th:value="${telefono.id}">
+                        <input type="tel"  th:value="${telefono.numeroTelefonico}" name="telefonos">
+        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img th:src="@{/img/Trazado13.png}" alt="" title="Eliminar telefono" class="eliminarT" th:idEliminar="${telefono.id}">
+                    </div>
+                </div>
+                <br><br>
+    
+                <p>Emails</p>
+                <br>
+    
+                <div class="contenedor-emails">
+
+                    <div class="email" th:each="email : ${emls}">
+                        <img th:src="@{/img/Trazado14.png}" alt="" width="43px" class="imagen-tipoC">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+                        <input type="hidden" name="idemails" th:value="${email.id}">
+                        <input type="email"  th:value="${email.direccionEmail}" name="emails">
+    
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img th:src="@{/img/Trazado13.png}" alt="" title="Eliminar email" class="eliminarE" th:idEliminar="${email.id}">
+                    </div>
+
+                </div> 
+            </div>
+
+
+            <br><br>
+            <input type="submit" value="Guardar contacto">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a th:href="@{/agenda}" class="btn-volver">Cancelar y volver</a>
+
+        </form>
+    </section>
+    
+    <script th:src="@{/javascript/myhttp.js}"></script>
+    <script th:src="@{/javascript/funcionalidades_nuevo.js}"></script>
+</body>
+</html>
