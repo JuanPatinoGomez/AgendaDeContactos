@@ -57,9 +57,6 @@ public class ControllerGeneral {
 	@PostMapping("/guardar")
 	public String guardarContacto(@ModelAttribute PersonaFormato personaformateada, HttpServletRequest request) {
 
-		
-		
-
 		// Construir la persona
 		Persona persona = new Persona();
 		persona.setId(personaformateada.getId());
