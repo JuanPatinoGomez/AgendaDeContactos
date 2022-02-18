@@ -3,15 +3,21 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
+body{
+    background-color: #e8eaed;
+}
 section#seccion-formulario{
+    background-color: white;
     width: 70vw;
-    border: solid 1px gray;
+    /* border: solid 1px gray; */
 
     margin: auto;
     margin-top: 50px;
     /* text-align: center; */
     padding-bottom: 50px;
+    margin-bottom: 50px;
+    box-shadow: -10px 10px 10px grey;
+    border-radius: 15px;
 }
 
 img.logo-contacto{

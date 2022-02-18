@@ -3,6 +3,9 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
+body{
+    background-color: #e8eaed;
+}
 section#cabecera{
     /* background-color: red; */
     height: 27vh;
@@ -21,6 +24,7 @@ section#cabecera div.cont{
 
 section#cabecera div.cont a{
     text-decoration: none;
+    color: #d800ff;
 }
 
 section#cabecera div.cont div.buscador{
@@ -53,13 +57,14 @@ section#cuerpo{
 }
 
 div.contenedor-contactos{
-    /* background-color: blue; */
+    background-color: white;
     width: 60%;
     min-height: 60vh;
     margin-top: 20px;
-    border: solid 1px gray;
+    /* border: solid 1px gray; */
     padding-top: 30px;
-    
+    border-radius: 15px;
+    box-shadow: -10px 10px 10px grey;
 }
 
 div.contacto{
@@ -73,6 +78,8 @@ div.contacto{
     margin-bottom: 30px;
     padding: 5px;
 
+    background-color: #3db5a4a6;
+    border-radius: 10px;
 }
 
 div.contacto p{
